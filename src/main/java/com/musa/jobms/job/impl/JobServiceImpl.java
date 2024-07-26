@@ -4,13 +4,18 @@ package com.musa.jobms.job.impl;
 import com.musa.jobms.job.Job;
 import com.musa.jobms.job.JobRepository;
 import com.musa.jobms.job.JobService;
+import com.musa.jobms.job.dto.JobWithCompanyDto;
 import com.musa.jobms.job.external.Company;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class JobServiceImpl implements JobService {
     JobRepository jobRepository;
@@ -21,10 +26,23 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public List<Job> findAll() {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForObject(" http://localhost:8082/companies/1", Company.class);
-        return jobRepository.findAll();
+    public List<JobWithCompanyDto> findAll() {
+        List<Job> jobs = jobRepository.findAll();
+        List<JobWithCompanyDto> jobWithCompanyDtos = new ArrayList<>();
+
+
+    return jobs.stream().map(this::convertToDto)
+            .collect(Collectors.toList());
+    }
+    private JobWithCompanyDto convertToDto(Job job) {
+                JobWithCompanyDto jobWithCompanyDto = new JobWithCompanyDto();
+                jobWithCompanyDto.setJob(job);
+
+                RestTemplate restTemplate = new RestTemplate();
+                Company company = restTemplate.getForObject("http://localhost:8082/companies/" + job.getCompanyId(), Company.class);
+                jobWithCompanyDto.setCompany(company);
+             return jobWithCompanyDto;
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.musa.jobms.job;
 
 
+import com.musa.jobms.job.dto.JobWithCompanyDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Job>> findAll() {
+    @GetMapping
+    public ResponseEntity<List<JobWithCompanyDto>> findAll() {
         return ResponseEntity.ok(jobService.findAll());
     }
 
