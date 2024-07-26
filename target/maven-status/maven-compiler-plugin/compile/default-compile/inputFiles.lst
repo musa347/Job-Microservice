@@ -1,0 +1,8 @@
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/JobApplication.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/Job.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/JobController.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/JobRepository.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/JobService.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/JopRepository.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/external/Company.java
+/Users/ibrahimmusa/IdeaProjects/Job-Microservice/src/main/java/com/musa/jobms/job/impl/JobServiceImpl.java
